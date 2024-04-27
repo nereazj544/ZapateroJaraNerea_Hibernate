@@ -36,16 +36,16 @@ public class Ejercicio3 {
 
 		String q = "From Programas where nombre like '" + n + "' " + o + " ver like '" + v + "'";
 
-//				Query<Programas> p = s.createQuery(sql, Programas.class);
+		// Query<Programas> p = s.createQuery(sql, Programas.class);
 		// Query esta en desuso
 
 		List<Programas> p = s.createQuery(q).list();
 
 		// De esta manera no muestra
 		// ! FABRICANTES
-//		Fabricantes f = new Fabricantes();
+		// Fabricantes f = new Fabricantes();
 
-//		List<Fabricantes> fList = s.createQuery(q).list();
+		// List<Fabricantes> fList = s.createQuery(q).list();
 
 		// Mostramos los resultados
 		System.out.println("RESULTADOS: ");

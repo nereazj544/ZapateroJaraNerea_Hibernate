@@ -1,7 +1,10 @@
 package Versiones_Alternativas;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 import javax.annotation.processing.FilerException;
@@ -15,7 +18,7 @@ import RecuP1.HibernateUtil;
 
 //TODO: NO CARRURA :)
 public class Ej2_2_File {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		SessionFactory sFactory = HibernateUtil.getSessionFactory();
 		Session s = sFactory.openSession();
 		Transaction t = s.beginTransaction();
@@ -28,14 +31,28 @@ public class Ej2_2_File {
 
 		String ruta = sc.nextLine();
 		File file = new File(ruta);
-		
+
 		Fabricantes f = new Fabricantes();
-		
-		f.setNombre(ruta);
-		f.setPais(ruta);
-		f.setCodFab(ruta);
-		
-		s.save(f);
-		t.commit();
+
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+
+			String n = br.readLine();
+			String p = br.readLine();
+			String c = br.readLine();
+
+			f.setCodFab(c);
+			f.setNombre(n);
+			f.setPais(p);
+
+			s.save(f);
+			t.commit();
+			br.close();
+			System.out.println("DATOS GUARDADOS");
+
+		} catch (FileNotFoundException e) {
+			System.out.println("NO SE ENCUENTRA EL ARCHIVO");
+		}
+
 	}
 }

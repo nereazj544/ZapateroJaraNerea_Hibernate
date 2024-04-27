@@ -26,11 +26,11 @@ public class Ej2_1_args {
 		
 		Fabricantes f = new Fabricantes();
 		
-		System.out.println("Nombre: ");
+		System.out.println("Nombre: " + n);
 		f.setNombre(n);
-		System.out.println("Pais: ");
+		System.out.println("Pais: " + p);
 		f.setPais(p);
-		System.out.println("Codigo: ");
+		System.out.println("Codigo: " + c);
 		f.setCodFab(c);
 		
 		try {
